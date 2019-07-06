@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    unicode-display_width (1.6.0)
+    whirly (0.2.6)
+      unicode-display_width (~> 1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  whirly
+
+BUNDLED WITH
+   2.0.2
