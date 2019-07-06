@@ -1,6 +1,6 @@
 # rtl-transcoder
 
-This Ruby script will parse [RTL Télé Lëtzebuerg](http://www.rtl.lu/) web pages, download their respective video files from the host server and transcode them into a valid `.mp4` video file locally using ffmpeg.
+The app will parse [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, download their respective video files from the host server and transcode them into a valid `.mp4` video file locally using ffmpeg. The app can also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
 ## Usage
 
@@ -10,6 +10,12 @@ You need to have [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmp
 
 * `sudo apt-get install ffmpeg`
 * `sudo pacman -S ffmpeg`
+
+### Web frontend
+
+The app comes with a simple web frontend powered by Ruby, Sinatra and Puma. You can start the app with `foreman start`, `ruby app.rb` or use the `Procfile` for cloud deployments.
+
+<img src="https://github.com/schopenhauer/rtl-transcoder/blob/master/screenshot.png" width="550">
 
 ### Command-line usage
 
@@ -58,7 +64,8 @@ Done.
 
 ## Credits
 
-* [Ruby](https://www.ruby-lang.org/en/)
+* [Ruby](https://www.ruby-lang.org/en/), [Sinatra](http://sinatrarb.com/) and [Puma](http://puma.io/)
+* [Milligram](https://milligram.io/) CSS framework
 * [ffmpeg](https://ffmpeg.org/)
 
 ## Contributing

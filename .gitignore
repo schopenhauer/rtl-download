@@ -8,7 +8,6 @@
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-/tmp/*.ts
 /tmp/list.txt
 
 # Used by dotenv library to load environment variables.
@@ -37,3 +36,4 @@ build-iPhoneSimulator/
 .rvmrc
 
 *.mp4
+*.ts
