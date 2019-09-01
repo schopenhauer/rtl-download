@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.6.3'
+
 group :sinatra do
   gem 'sinatra'
   gem 'sinatra-contrib'
