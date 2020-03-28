@@ -38,6 +38,13 @@ class RTL
       videos = hls.scan(HLS_MANIFEST)
       count = videos.size
 
+      # (fallback) adjust to next best available quality
+      unless hls.include? quality
+        next_best_available_quality = videos.reverse.first[1]
+        puts "WARNING -- Selected quality #{quality} not available, adjusting to next best quality #{next_best_available_quality}."
+        quality = next_best_available_quality
+      end
+
       # select chunk file for selected quality
       videos.select! { |v| v[1].include? quality }
       chunk_file = videos[0][2]
