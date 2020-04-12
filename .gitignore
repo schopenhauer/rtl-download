@@ -37,3 +37,4 @@ build-iPhoneSimulator/
 
 *.mp4
 *.ts
+*.lock
