@@ -2,26 +2,29 @@
 
 The app will parse [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, download their respective video files from the host server and transcode them into a valid `.mp4` video file locally using ffmpeg. The app can also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
-*Please note that this app replaces the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.*
+Please note that this app replaces the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.
 
 ## Usage
 
 ### Requirements
 
-You need to have [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed.
+Please make sure to have up-to-date versions of [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed on your system.
 
-* `sudo apt-get install ffmpeg`
-* `sudo pacman -S ffmpeg`
+* Debian/Ubuntu: `sudo apt-get install ffmpeg`
+* CentOS/Fedora: `sudo dnf install ffmpeg`
+* Arch Linux/Manjaro: `sudo pacman -S ffmpeg`
 
-### Web frontend
+Before you start the app, you need to install the necessary gems using `bundle install`.
 
-The app comes with a simple web frontend powered by Ruby, Sinatra and Puma. You can start the app with `foreman start`, `ruby app.rb` or use the `Procfile` for cloud deployments.
+### Web usage
+
+The app comes with a web frontend powered by Ruby, Sinatra and Puma. You can start the app with the commands `foreman start`, `ruby app.rb` or use simply make use of the `Procfile` for cloud deployments.
 
 <img src="https://github.com/schopenhauer/rtl-transcoder/blob/master/screenshot.png" width="550">
 
 ### Command-line usage
 
-You hit the command line to use the script. By default, the video quality will be set to a resolution of `1280x720` (high quality).
+Hit the command line to use the script. By default, the video quality will be set to a resolution of `1280x720` (high quality).
 
 ```
 Usage: ruby dl.rb <URL> [options]
@@ -38,28 +41,28 @@ Usage: ruby dl.rb <URL> [options]
 The script should produce something like this:
 
 ```
-$ ruby dl.rb https://www.rtl.lu/news/national/a/1372563.html
+$ ruby dl.rb https://www.rtl.lu/news/national/a/1372563.html -v
 
-Using ffmpeg version: 4.1.3
-Selected video quality: 1920x1080
+Using ffmpeg version: 4.2.2
+Selected video quality: 1280x720
 Parsing: https://www.rtl.lu/news/national/a/1372563.html
 Found playlist: https://vod-edge.rtl.lu/replay/amlst:3170491/playlist.m3u8
-Found chunk list: chunklist_b6406090.m3u8 (1920x1080) - out of 4 chunk lists
+Found chunk list: chunklist_b4408200.m3u8 (1280x720) - out of 4 chunk lists
 Downloading 14 chunk files...
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_0.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_1.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_2.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_3.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_4.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_5.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_6.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_7.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_8.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_9.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_10.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_11.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_12.ts
-Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b6406090_13.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_0.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_1.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_2.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_3.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_4.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_5.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_6.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_7.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_8.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_9.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_10.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_11.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_12.ts
+Downloading: https://vod-edge.rtl.lu/replay/amlst:3170491/media_b4408200_13.ts
 File saved to: 1372563.mp4
 Done.
 ```
