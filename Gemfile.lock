@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.17.1)
-    better_errors (2.7.0)
+    backports (3.17.2)
+    better_errors (2.7.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -16,7 +16,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.2)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
