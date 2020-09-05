@@ -2,7 +2,7 @@
 
 The app will parse [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, download their respective video files from the host server and transcode them into a valid `.mp4` video file locally using ffmpeg. The app can also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
-Please note that this app replaces the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.
+Please note this git repo supercedes the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.
 
 ## Usage
 
@@ -10,9 +10,9 @@ Please note that this app replaces the [rtl-download](https://github.com/schopen
 
 Please make sure to have up-to-date versions of [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed on your system.
 
-* Debian/Ubuntu: `sudo apt-get install ffmpeg`
-* CentOS/Fedora: `sudo dnf install ffmpeg`
-* Arch Linux/Manjaro: `sudo pacman -S ffmpeg`
+* Debian / Ubuntu: `sudo apt-get install ffmpeg`
+* CentOS / Fedora: `sudo dnf install ffmpeg`
+* Arch Linux / Manjaro: `sudo pacman -S ffmpeg`
 
 Before you start the app, you need to install the necessary gems using `bundle install`.
 
@@ -24,7 +24,9 @@ The app comes with a web frontend powered by Ruby, Sinatra and Puma. You can sta
 
 ### Command-line usage
 
-Hit the command line to use the script. By default, the video quality will be set to a resolution of `1280x720` (high quality).
+Hit the command line to use the script.
+
+By default, the video quality will be set to a resolution of `1280x720` (high quality).
 
 ```
 Usage: ruby dl.rb <URL> [options]
@@ -43,7 +45,7 @@ The script should produce something like this:
 ```
 $ ruby dl.rb https://www.rtl.lu/news/national/a/1372563.html -v
 
-Using ffmpeg version: 4.2.2
+Using ffmpeg version: 4.3.1
 Selected video quality: 1280x720
 Parsing: https://www.rtl.lu/news/national/a/1372563.html
 Found playlist: https://vod-edge.rtl.lu/replay/amlst:3170491/playlist.m3u8

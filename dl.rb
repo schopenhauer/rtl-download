@@ -15,7 +15,7 @@ ARGV << '-h' if ARGV.empty?
 @options = {
   quality: '1280x720',
   verbose: false,
-  target: '.'
+  target: '.' # current folder
 }
 
 OptionParser.new do |opts|
@@ -25,6 +25,7 @@ OptionParser.new do |opts|
   opts.on('-3', '--high', 'High quality (1280x720)') do |v| @options[:quality] = '1280x720' end
   opts.on('-4', '--highest', 'Highest quality (1920x1080)') do |v| @options[:quality] = '1920x1080' end
   opts.on('-v', '--verbose', 'Verbose mode') do |v| @options[:verbose] = true end
+  opts.on('-o', '--output=FOLDER', 'Specify output folder (optional)') do |v| @options[:target] = v end
   opts.on_tail('-h', '--help', 'Show help message') do
     puts opts
     exit
