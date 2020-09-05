@@ -35,6 +35,7 @@ Usage: ruby dl.rb <URL> [options]
     -3, --high                       High quality (1280x720)
     -4, --highest                    Highest quality (1920x1080)
     -v, --verbose                    Verbose mode
+    -o, --output=FOLDER              Specify output folder (optional)
     -h, --help                       Show help message
 ```
 
