@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "~> 3.0.0"
 
 group :sinatra do
   gem 'sinatra'
