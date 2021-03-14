@@ -20,7 +20,7 @@ Before you start the app, you need to install the necessary gems using `bundle i
 
 The app comes with a web frontend powered by Ruby, Sinatra and Puma. You can start the app with the commands `foreman start`, `ruby app.rb` or use simply make use of the `Procfile` for cloud deployments.
 
-<img src="https://github.com/schopenhauer/rtl-transcoder/blob/master/screenshot.png" width="550">
+<img src="https://github.com/schopenhauer/rtl-transcoder/blob/main/screenshot.png" width="550">
 
 ### Command-line usage
 
