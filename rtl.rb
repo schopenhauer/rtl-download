@@ -27,7 +27,7 @@ class RTL
     puts "Parsing: #{url}"
     html = fetch(url)
 
-    if (html =~ HTML_TAG)
+    if html =~ HTML_TAG
 
       # extract playlist.m3u8 url from <rtl-player> tag
       playlist = html.scan(HTML_TAG)[0][0]
@@ -38,7 +38,7 @@ class RTL
       videos = hls.scan(HLS_MANIFEST)
       count = videos.size
 
-      # (fallback) adjust to next best available quality
+      # adjust to next best available quality (fallback)
       unless hls.include? quality
         next_best_available_quality = videos.reverse.first[1]
         puts "WARNING -- Selected quality #{quality} not available, adjusting to next best quality #{next_best_available_quality}."

@@ -1,6 +1,6 @@
 # rtl-transcoder
 
-The app will parse [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, download their respective video files from the host server and transcode them into a valid `.mp4` video file locally using ffmpeg. The app can also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
+This app parses [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, downloads their respective video files from the host server and transcodes them into an `.mp4` file locally using ffmpeg. The app also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
 Please note this git repo supercedes the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.
 
