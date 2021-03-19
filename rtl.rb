@@ -14,10 +14,10 @@ class RTL
     File.basename(URI.parse(url).path)
   end
 
-  def self.download(url, temp = true)
+  def self.download(url)
     data = fetch(url)
-    open(TMP_FOLDER + get_filename(url), 'wb+') do |f|
-      f.write(data)
+    open(File.join(TMP_FOLDER, get_filename(url)), 'wb+') do |file|
+      file.write(data)
     end
   end
 
@@ -46,22 +46,22 @@ class RTL
       end
 
       # select chunk file for selected quality
-      videos.select! { |v| v[1].include? quality }
+      videos.select! { |video| video[1].include? quality }
       chunk_file = videos[0][2]
-      puts "Found chunk list: #{chunk_file} (#{quality}) - out of #{count} chunk list" + (count > 1 ? 's' : '')
+      if options[:verbose] == true
+        puts "Found chunk list: #{chunk_file} (#{quality}) - out of #{count} chunk list" + (count > 1 ? 's' : '')
+      end
 
       # download chunk file
-      base_url = playlist.gsub('playlist.m3u8', '')
-      chunk_url = base_url + chunk_file
-      chunk_list = fetch(chunk_url)
+      chunk_list = fetch(playlist.gsub('playlist.m3u8', '') + chunk_file)
 
       # create file list
-      ts_files  = chunk_list
-                  .split(/\n/)
-                  .select { |line| line.match(/\.ts$/) }
+      ts_files  = chunk_list.split(/\n/).select { |line| line.match(/\.ts$/) }
 
       # save file list for ffpmeg
-      File.open(TMP_FOLDER + 'list.txt', 'w') { |file| file.write(ts_files.map {|ts| ts = "file '#{ts}'"}.join("\n")) }
+      File.open(File.join(TMP_FOLDER, 'list.txt'), 'w') { |file|
+        file.write(ts_files.map {|ts| ts = "file '#{ts}'"}.join("\n"))
+      }
 
       # download ts files
       puts "Downloading #{ts_files.length} chunk files..."
@@ -74,12 +74,14 @@ class RTL
       # transcode using ffpmeg
       video_file = get_filename(url).split('.')[0] + '.mp4'
       target_file = File.join(options[:target], video_file)
-      system "ffmpeg -f concat -i " + (TMP_FOLDER + 'list.txt') + " -c copy " + (TMP_FOLDER + 'all.ts') + " -loglevel 0"
-      system "ffmpeg -i " + (TMP_FOLDER + 'all.ts') + " -acodec copy -vcodec copy #{target_file} -loglevel 0 -y"
+      list_file = File.join(TMP_FOLDER, 'list.txt')
+      all_file = File.join(TMP_FOLDER, 'all.ts')
+      system "ffmpeg -f concat -i #{list_file} -c copy #{all_file} -loglevel 0"
+      system "ffmpeg -i #{all_file} -acodec copy -vcodec copy #{target_file} -loglevel 0 -y"
 
       # remove temporary files
-      Dir.glob(TMP_FOLDER + '*.ts').each { |f| File.delete(f) }
-      Dir.glob(TMP_FOLDER + 'list.txt').each { |f| File.delete(f) }
+      Dir.glob(File.join(TMP_FOLDER, '*.ts')).each { |file| File.delete(file) }
+      File.delete(list_file)
 
       puts "File saved to: #{video_file}"
       puts 'Done.'

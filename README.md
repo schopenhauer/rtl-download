@@ -1,8 +1,6 @@
-# rtl-transcoder
+# rtl-download
 
-This app parses [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, downloads their respective video files from the host server and transcodes them into an `.mp4` file locally using ffmpeg. The app also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
-
-Please note this git repo supercedes the [rtl-download](https://github.com/schopenhauer/rtl-download) app, which has been deprecated and is no longer maintained.
+This app parses [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web sites, downloads their respective video files from the host server and transcodes them into an `.mp4` file locally using ffmpeg. The app also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
 ## Usage
 
@@ -10,17 +8,17 @@ Please note this git repo supercedes the [rtl-download](https://github.com/schop
 
 Please make sure to have up-to-date versions of [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed on your system.
 
-* Debian / Ubuntu: `sudo apt-get install ffmpeg`
-* CentOS / Fedora: `sudo dnf install ffmpeg`
-* Arch Linux / Manjaro: `sudo pacman -S ffmpeg`
+* Debian: `sudo apt-get install ffmpeg`
+* CentOS: `sudo dnf install ffmpeg`
+* Arch Linux: `sudo pacman -S ffmpeg`
 
 Before you start the app, you need to install the necessary gems using `bundle install`.
 
-### Web usage
+### Web frontend
 
 The app comes with a web frontend powered by Ruby, Sinatra and Puma. You can start the app with the commands `foreman start`, `ruby app.rb` or use simply make use of the `Procfile` for cloud deployments.
 
-<img src="https://github.com/schopenhauer/rtl-transcoder/blob/main/screenshot.png" width="550">
+<img src="https://github.com/schopenhauer/rtl-download/blob/main/screenshot.png" width="550">
 
 ### Command-line usage
 
@@ -41,7 +39,7 @@ Usage: ruby dl.rb <URL> [options]
 
 ### Example
 
-The script should produce something like this:
+The `dl.rb` script should produce something like this:
 
 ```
 $ ruby dl.rb https://www.rtl.lu/news/national/a/1372563.html -v
