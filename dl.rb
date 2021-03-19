@@ -1,13 +1,11 @@
 require 'optparse'
 require_relative 'rtl'
 
-ffmpeg = %x[ffmpeg -version]
-
-if ffmpeg.nil?
-  puts 'ERROR: ffpmeg is not installed on this system. Please install the necessary package(s) before you continue.'
-  exit
+if RTL.ffmpeg?
+  puts "Using ffmpeg version: #{RTL.ffmpeg_version}"
 else
-  puts 'Using ffmpeg version: ' + ffmpeg.split("\n").first.match(/(?<=version n)(.*)(?= Copyright)/).to_s
+  puts 'Error: ffpmeg is not installed on this system. Please install the necessary packages before you continue.'
+  exit
 end
 
 ARGV << '-h' if ARGV.empty?
@@ -15,7 +13,7 @@ ARGV << '-h' if ARGV.empty?
 @options = {
   quality: '1280x720',
   verbose: false,
-  target: '.' # current folder
+  target: __dir__
 }
 
 OptionParser.new do |opts|

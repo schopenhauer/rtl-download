@@ -1,9 +1,17 @@
-<p>Mir hunn <%= videos.size %> Video<%= (videos.size == 1) ? '' : 'en' %> fonnt. Klick op de Link fir de Video erofzelueden.</p>
+<p>
+  Mir hunn <%= videos.size %> Video<%= (videos.size == 1) ? '' : 'en' %> fonnt. Klick op de Link fir de Video erofzelueden.
+</p>
 
 <ul>
   <% videos.each_with_index do |video, i| %>
-  <li><a href="/<%= video %>"><%= video %></a></li>
+  <li>
+    <a href="/<%= video %>">
+      <%= video %>
+    </a>
+  </li>
   <% end %>
 </ul>
 
-<button class="button button-outline" onClick="javascript:window.history.back()">Zr&eacute;ck</button>
+<button class="button button-outline" onClick="javascript:window.history.back()">
+  Zr&eacute;ck
+</button>

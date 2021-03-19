@@ -10,18 +10,22 @@ class RTL
     URI.parse(url).read
   end
 
-  def self.get_filename(url)
+  def self.filename(url)
     File.basename(URI.parse(url).path)
   end
 
   def self.download(url)
     data = fetch(url)
-    open(File.join(TMP_FOLDER, get_filename(url)), 'wb+') do |file|
+    open(File.join(TMP_FOLDER, filename(url)), 'wb+') do |file|
       file.write(data)
     end
   end
 
   def self.parse(url, options)
+    if !ffmpeg?
+      abort 'ffmpeg is not installed on this system'
+    end
+
     quality = options[:quality].to_s
     puts "Selected video quality: #{quality}"
     puts "Parsing: #{url}"
@@ -53,7 +57,9 @@ class RTL
       end
 
       # download chunk file
-      chunk_list = fetch(playlist.gsub('playlist.m3u8', '') + chunk_file)
+      base_url = playlist.gsub('playlist.m3u8', '')
+      chunk_url = base_url + chunk_file
+      chunk_list = fetch(chunk_url)
 
       # create file list
       ts_files  = chunk_list.split(/\n/).select { |line| line.match(/\.ts$/) }
@@ -72,7 +78,7 @@ class RTL
       end
 
       # transcode using ffpmeg
-      video_file = get_filename(url).split('.')[0] + '.mp4'
+      video_file = filename(url).split('.')[0] + '.mp4'
       target_file = File.join(options[:target], video_file)
       list_file = File.join(TMP_FOLDER, 'list.txt')
       all_file = File.join(TMP_FOLDER, 'all.ts')
@@ -85,10 +91,24 @@ class RTL
 
       puts "File saved to: #{video_file}"
       puts 'Done.'
+      video_file
     else
       puts 'No playlist found.'
+      false
     end
-    video_file
+  end
+
+  def self.ffmpeg?
+    system "which ffmpeg > /dev/null 2>&1"
+  end
+
+  def self.ffmpeg_version
+    if ffmpeg?
+      ffmpeg = %x[ffmpeg -version]
+      ffmpeg.split("\n").first.match(/(?<=version n)(.*)(?= Copyright)/).to_s
+    else
+      false
+    end
   end
 
 end
