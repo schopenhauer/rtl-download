@@ -14,8 +14,8 @@ GEM
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.7)
-    puma (5.3.2)
+    nio4r (2.5.8)
+    puma (5.5.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-protection (2.1.0)
@@ -46,7 +46,7 @@ DEPENDENCIES
   sinatra-contrib
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.24
+   2.2.32
