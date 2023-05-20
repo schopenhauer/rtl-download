@@ -1,15 +1,15 @@
 # rtl-download
 
-This app parses [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web sites, downloads their respective video files from the host server and transcodes them into an `.mp4` file locally using ffmpeg. The app also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
+The app parses [RTL Télé Lëtzebuerg](https://www.rtl.lu/) web pages, detects and downloads videos and transcodes them into an `.mp4` file using ffmpeg. The app also includes a web frontend powered by [Sinatra](http://sinatrarb.com).
 
 ## Usage
 
 ### Requirements
 
-Please make sure to have up-to-date versions of [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed on your system.
+Make sure to have up-to-date versions of [Ruby](https://www.ruby-lang.org/en/) and [ffmpeg](https://ffmpeg.org/) installed on your system.
 
 * Debian: `sudo apt-get install ffmpeg`
-* CentOS: `sudo dnf install ffmpeg`
+* RHEL & Co: `sudo dnf install ffmpeg`
 * Arch Linux: `sudo pacman -S ffmpeg`
 
 Before you start the app, you need to install the necessary gems using `bundle install`.
