@@ -10,6 +10,7 @@ GEM
     debug_inspector (1.1.0)
     dotenv (2.8.1)
     erubi (1.12.0)
+    ffi (1.15.5)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
@@ -21,6 +22,8 @@ GEM
       rack
     rouge (4.1.1)
     ruby2_keywords (0.0.5)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     sinatra (3.0.6)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
@@ -42,6 +45,7 @@ DEPENDENCIES
   binding_of_caller
   dotenv
   puma
+  sassc
   sinatra
   sinatra-contrib
 
